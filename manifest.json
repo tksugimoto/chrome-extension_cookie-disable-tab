@@ -1,0 +1,28 @@
+{
+	"name": "Cookie無効化",
+	"version": "0.1",
+	"manifest_version": 2,
+
+	"description": "指定したタブの通信ではCookieを送信・受信（設定）しないようにする",
+
+	"icons": {
+		"128": "icon/icon.png"
+	},
+	"permissions": [
+		"webRequest",
+		"webRequestBlocking",
+		"*://*/*"
+	],
+
+	"background": {
+		"scripts": [
+			"cookie_library.js",
+			"background.js"
+		]
+	},
+		
+	"page_action": {
+		"default_icon": "icon/icon_cookie_enable.png",
+		"default_title": "Cookie無効化"
+	}
+}
