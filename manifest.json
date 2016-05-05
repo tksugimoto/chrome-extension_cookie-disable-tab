@@ -1,6 +1,6 @@
 {
 	"name": "Cookie無効化",
-	"version": "0.1",
+	"version": "0.2",
 	"manifest_version": 2,
 
 	"description": "指定したタブの通信ではCookieを送信・受信（設定）しないようにする",
