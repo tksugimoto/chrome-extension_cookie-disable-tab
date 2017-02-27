@@ -1,4 +1,4 @@
-﻿
+
 // インストール時に開いているすべてのタブにアイコン表示
 chrome.tabs.query({}, function (tabs) {
 	tabs.forEach(function (tab) {

@@ -1,4 +1,4 @@
-﻿
+
 function setDisableCookieEvent(filter, isTarget) {
 	/*
 		filter: {
