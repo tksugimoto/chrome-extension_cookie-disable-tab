@@ -1,5 +1,5 @@
-﻿
-function setDisableCookieEvent(filter, isTarget) {
+
+const setDisableCookieEvent = (filter, isTarget) => {
 	/*
 		filter: {
 			urls: [
@@ -11,10 +11,10 @@ function setDisableCookieEvent(filter, isTarget) {
 			return true;	// or false
 		}
 	*/
-	var callback_request = function (details) {
-		var requestHeaders = details.requestHeaders;
+	const callback_request = details => {
+		const requestHeaders = details.requestHeaders;
 		if (isTarget(details.tabId)) {
-			for (var i = 0; i < requestHeaders.length; ++i) {
+			for (let i = 0; i < requestHeaders.length; ++i) {
 				if (requestHeaders[i].name === "Cookie") {
 					requestHeaders.splice(i, 1);
 					break;
@@ -25,16 +25,16 @@ function setDisableCookieEvent(filter, isTarget) {
 			requestHeaders: requestHeaders
 		};
 	};
-	var opt_extraInfoSpec_request = [
+	const opt_extraInfoSpec_request = [
 		"requestHeaders",
 		"blocking"
 	];
 	chrome.webRequest.onBeforeSendHeaders.addListener(callback_request, filter, opt_extraInfoSpec_request);
 	
-	var callback_response = function (details) {
-		var responseHeaders = details.responseHeaders;
+	const callback_response = details => {
+		const responseHeaders = details.responseHeaders;
 		if (isTarget(details.tabId)) {
-			var i = responseHeaders.length;
+			let i = responseHeaders.length;
 			while (i > 0) {
 				i--;
 				if (responseHeaders[i].name === "Set-Cookie") {
@@ -47,9 +47,9 @@ function setDisableCookieEvent(filter, isTarget) {
 			responseHeaders: responseHeaders
 		};
 	};
-	var opt_extraInfoSpec_response = [
+	const opt_extraInfoSpec_response = [
 		"responseHeaders",
 		"blocking"
 	];
 	chrome.webRequest.onHeadersReceived.addListener(callback_response, filter, opt_extraInfoSpec_response);
-}
+};
